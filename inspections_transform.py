@@ -3,7 +3,7 @@ import pandas as pd
 import csv
 
 input_path = os.join(".","restaurant_inspections.csv")
-inspection_df = pd.read_csv(path)
+inspection_df = pd.read_csv(input_path)
 # inspection_df.head()
 
 rename_columns = {"facility_name":"Restaurant Name", "facility_address":"Restaurant Address", "facility_city":"Restaurant City", 
@@ -24,4 +24,4 @@ inspection_clean_df["Restaurant ZIP"] = inspection_clean_df["Restaurant ZIP"].st
 # inspection_clean_df
 
 output_path = os.join(".", "restaurant_inspections_clean.csv")
-inspection_clean_df.to_csv(output_path)
+inspection_clean_df.to_csv(output_path, index=False)
