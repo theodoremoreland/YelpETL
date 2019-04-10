@@ -2,7 +2,7 @@ import os.path as os
 import pandas as pd
 import csv
 
-input_path = os.join(".","restaurant_inspections.csv")
+input_path = os.join(".","restaurant_inspections_original.csv")
 inspection_df = pd.read_csv(input_path)
 # inspection_df.head()
 
