@@ -1,5 +1,5 @@
-DROP DATABASE Restaurant_db;
-CREATE DATABASE Restaurant_db;
+DROP DATABASE restaurant_db;
+CREATE DATABASE restaurant_db;
 
 USE Restaurant_db;
 
