@@ -1,12 +1,12 @@
-DROP DATABASE restaurant_db;
+DROP DATABASE IF EXISTS restaurant_db;
 CREATE DATABASE restaurant_db;
 
-USE Restaurant_db;
+USE restaurant_db;
 
 CREATE TABLE inspection(
 restaurant_id VARCHAR(9) NOT NULL,
 restaurant_name VARCHAR(255),
-restaurant_address VARCHAR(255),
+restaurant_address VARCHAR(255) NOT NULL,
 restaurant_city VARCHAR(45),
 restaurant_state VARCHAR(2),
 restaurant_zip INT(5),
@@ -16,6 +16,7 @@ PRIMARY KEY(restaurant_id)
 );
 
 CREATE TABLE yelp_restaurant_data(
+entry_id int(10) NOT NULL AUTO_INCREMENT,
 yelp_id VARCHAR(255) NOT NULL,
 yelp_rest_name VARCHAR(255),
 yelp_rating FLOAT(3, 2),
@@ -24,15 +25,14 @@ yelp_rest_address VARCHAR(255) NOT NULL,
 yelp_rest_city VARCHAR(45),
 yelp_rest_state VARCHAR(2),
 yelp_rest_zip INT(5),
-PRIMARY KEY (yelp_id),
-FOREIGN KEY (yelp_rest_address) REFERENCES inspection(restaurant_address)
+PRIMARY KEY (entry_id)
 );
 
 CREATE TABLE yelp_review_data(
+entry_id int(10) NOT NULL AUTO_INCREMENT,
 yelp_id VARCHAR(255) NOT NULL,
 yelp_rest_name VARCHAR(255),
 yelp_rating FLOAT(3, 2),
 yelp_review_text VARCHAR(255),
-PRIMARY KEY (yelp_id)
+PRIMARY KEY (entry_id)
 );
-
