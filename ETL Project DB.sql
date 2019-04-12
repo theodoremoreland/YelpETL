@@ -3,8 +3,9 @@ CREATE DATABASE restaurant_db;
 
 USE restaurant_db;
 
+DROP TABLE IF EXISTS inspection;
 CREATE TABLE inspection(
-restaurant_id VARCHAR(9) NOT NULL,
+entry_id INT AUTO_INCREMENT NOT NULL,
 restaurant_name VARCHAR(255),
 restaurant_address VARCHAR(255) NOT NULL,
 restaurant_city VARCHAR(45),
@@ -12,9 +13,10 @@ restaurant_state VARCHAR(2),
 restaurant_zip INT(5),
 health_inspection_score INT(2),
 health_inspection_grade VARCHAR(1),
-PRIMARY KEY(restaurant_id)
+PRIMARY KEY (entry_id)
 );
 
+DROP TABLE IF EXISTS yelp_restaurant_data;
 CREATE TABLE yelp_restaurant_data(
 entry_id int(10) NOT NULL AUTO_INCREMENT,
 yelp_id VARCHAR(255) NOT NULL,
@@ -28,6 +30,7 @@ yelp_rest_zip INT(5),
 PRIMARY KEY (entry_id)
 );
 
+DROP TABLE IF EXISTS yelp_review_data;
 CREATE TABLE yelp_review_data(
 entry_id int(10) NOT NULL AUTO_INCREMENT,
 yelp_id VARCHAR(255) NOT NULL,
