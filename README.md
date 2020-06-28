@@ -1,7 +1,4 @@
-# Project2
-• Your two data sets
-• A preliminary sketch of your database (type of DB, tables, etc)
-• Preliminary list of necessary data transformations
+# YelpETL
 
 ETL project group: Heather Leek, Theodore Moreland, Adam Feldstein
 
