@@ -38,3 +38,23 @@ General data cleaning such as standardizing postal codes.
     Business ID
     Star Rating
     Review data 
+
+# Screenshots
+
+# Python terminal processing restaurants from Yelp Fusion API calls
+<img src="presentation/1.gif" width="900">
+
+# Python terminal processing reviews from Yelp Fusion API calls
+<img src="presentation/2.gif" width="900">
+
+# Jupyter Notebook finished processing restaurants
+<img src="presentation/1.PNG" width="900">
+
+# Pandas restaurants dataframe 
+<img src="presentation/2.PNG" width="900">
+
+# Jupyter Notebook finished processing reviews
+<img src="presentation/3.PNG" width="900">
+
+# Pandas reviews dataframe 
+<img src="presentation/4.PNG" width="900">
