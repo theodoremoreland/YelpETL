@@ -38,3 +38,5 @@ Transformations:
 We will take each data set and reduce them to necessary fields only in a Jupyter notebook.
 We will clean fields in each data set to ensure they appropriate.  For example, some of the zip codes are the full postal with 5-4 and some are just the the 5 numbers.
 We will create new dataframes from each data set in preparation for the SQL database.  
+
+This app is for the exercise of the ETL (Extract Transform Load) procedure in data analytics. Classmates and I will be making calls to the Yelp Fusion API then placing the extracted data into a Pandas DataFrame before transforming said data. Once the data has been transformed, we will be loading it into our local MySQL database.

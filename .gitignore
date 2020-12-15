@@ -3,6 +3,7 @@ yelp_data/*
 api_key.txt
 api_key.py
 db_access.py
+config.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
