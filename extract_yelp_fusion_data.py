@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 # Native
 import os
 import json
@@ -18,14 +12,8 @@ from ratelimit import limits
 from config import yelp_api_key
 
 
-# In[ ]:
-
-
 # Yelp Fusion API requires api keys to be passed through HTTP header value:
 headers = {"Authorization" : "Bearer" + " " + yelp_api_key}
-
-
-# In[ ]:
 
 
 @limits(calls=5, period=1)
@@ -56,31 +44,15 @@ def get_yelp_la_restaurants():
                 LA_restaurants_dict["city"].append(restaurants[j]["location"]["city"])
                 LA_restaurants_dict["state"].append(restaurants[j]["location"]["state"])
                 LA_restaurants_dict["zip"].append(restaurants[j]["location"]["zip_code"])
-                print(str(restaurants[j]["name"]) + " is now being stored.")
         except:
-            print("Invalid data. Skipping entry...")
             pass
         
     print("LA restaurant processing complete.")
     return LA_restaurants_dict
 
-
-# In[ ]:
-
-
 # Calls and logs API calls (LA restaurant data) to Yelp Fusion  
 LA_restaurants_dict = get_yelp_la_restaurants()
-
-
-# In[ ]:
-
-
-# Creates and previews restaurant dataframe
 LA_restaurants_df = pd.DataFrame(LA_restaurants_dict)
-LA_restaurants_df.tail(25)
-
-
-# In[ ]:
 
 
 @limits(calls=5, period=1)
@@ -106,39 +78,20 @@ def get_yelp_reviews(LA_restaurants_dict):
                 LA_restaurant_reviews_dict["rating"].append(reviews[j]["rating"])
                 LA_restaurant_reviews_dict["text"].append(reviews[j]["text"])
                 LA_restaurant_reviews_dict["time_created"].append(reviews[j]["time_created"])
-            print("Top 3 reviews for " + str(LA_restaurants_dict["name"][i]) + " completed.")
-            print("---------------------------------------------------------------------")
         except:
-            print("Business ID is invalid. Skipping invalid business data...")
             pass
 
     print("Yelp Reviews API process completed.")
     return LA_restaurant_reviews_dict
 
 
-# In[ ]:
-
-
 LA_restaurant_reviews_dict = get_yelp_reviews(LA_restaurants_dict)
-
-
-# In[ ]:
-
-
 LA_restaurant_reviews_df = pd.DataFrame(LA_restaurant_reviews_dict)
-LA_restaurant_reviews_df.tail(25)
 
-
-# In[ ]:
-
-
+# Drop duplicate data
 LA_restaurants_df_copy = LA_restaurants_df.copy().drop_duplicates(keep="first")
 LA_restaurant_reviews_df_copy = LA_restaurant_reviews_df.copy().drop_duplicates(keep="first")
 
-
-# In[ ]:
-
-
+# Create CSVs
 LA_restaurants_df_copy.to_csv("yelp_LA_restaurants.csv", header=True)
 LA_restaurant_reviews_df_copy.to_csv("yelp_LA_reviews.csv", header=True)
-
