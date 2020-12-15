@@ -29,6 +29,7 @@ def get_yelp_la_restaurants():
                   "city": [],
                   "state": [],
                   "zip": []}
+    restaurants_processed_count = 0
     
     for i in range(0, 1000, 20):
         try:
@@ -44,10 +45,13 @@ def get_yelp_la_restaurants():
                 LA_restaurants_dict["city"].append(restaurants[j]["location"]["city"])
                 LA_restaurants_dict["state"].append(restaurants[j]["location"]["state"])
                 LA_restaurants_dict["zip"].append(restaurants[j]["location"]["zip_code"])
+                restaurants_processed_count += 1
+                print(f'{restaurants_processed_count}.) {restaurants[j]["name"]} is now being stored.')
         except:
+            print("Invalid data. Skipping entry...")
             pass
         
-    print("LA restaurant processing complete.")
+    print("\n----------------------------LA restaurant processing complete.----------------------------\n")
     return LA_restaurants_dict
 
 # Calls and logs API calls (LA restaurant data) to Yelp Fusion  
@@ -65,6 +69,7 @@ def get_yelp_reviews(LA_restaurants_dict):
                          "rating": [],
                          "text": [],
                          "time_created": []}
+    reviews_processed_count = 0
     
     for i in range(0, len(LA_restaurants_dict["id"])):
         restaurant_id = LA_restaurants_dict["id"][i]
@@ -78,10 +83,13 @@ def get_yelp_reviews(LA_restaurants_dict):
                 LA_restaurant_reviews_dict["rating"].append(reviews[j]["rating"])
                 LA_restaurant_reviews_dict["text"].append(reviews[j]["text"])
                 LA_restaurant_reviews_dict["time_created"].append(reviews[j]["time_created"])
+            print(f'{reviews_processed_count}.) Top 3 reviews for {LA_restaurants_dict["name"][i]} completed.')
+            print("---------------------------------------------------------------------")
         except:
+            print("Business ID is invalid. Skipping invalid business data...")
             pass
 
-    print("Yelp Reviews API process completed.")
+    print("\n----------------------------Yelp Reviews API process completed.----------------------------\n")
     return LA_restaurant_reviews_dict
 
 
