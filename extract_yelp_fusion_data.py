@@ -83,7 +83,7 @@ def get_yelp_reviews(LA_restaurants_dict):
                 LA_restaurant_reviews_dict["rating"].append(reviews[j]["rating"])
                 LA_restaurant_reviews_dict["text"].append(reviews[j]["text"])
                 LA_restaurant_reviews_dict["time_created"].append(reviews[j]["time_created"])
-                reviews_processed_count += 1
+            reviews_processed_count += 1
             print(f'{reviews_processed_count}.) Top 3 reviews for {LA_restaurants_dict["name"][i]} completed.')
             print("---------------------------------------------------------------------")
         except:
