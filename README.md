@@ -1,42 +1,40 @@
 # YelpETL
+Scripts to extract, transform, and load Los Angeles Yelp data from the Yelp Fusion API and Kaggle. The process takes place in three Jupyter Notebooks, ultimately culminating in our data being persisted in a MySQL / SQLite database.
 
-ETL project group: Heather Leek, Theodore Moreland, Adam Feldstein
+*This was a group project at Washington University's Data Analytics Boot Camp (2019)*
 
-We will be utilizing the following data sources from Kaggle.com:
-https://www.kaggle.com/cityofLA/la-restaurant-market-health-data
-https://www.kaggle.com/yelp-dataset/yelp-dataset
-  yelp_academic_dataset_review.json
-  yelp_academic_dataset_business.json
+### Team
+* Heather Leek
+* Theodore Moreland
+* Adam Feldstein
 
-The first data set provides information about restaurants in Los Angeles, CA along with their name, address, city, state, zip and inspection health grade and health grade percentage.  The Yelp data will be an academic data set with reviews and star rating along with restaurant data.  
+## Data Sources / Extract
+* https://www.yelp.com/fusion
+* https://www.kaggle.com/cityofLA/la-restaurant-market-health-data
 
-We intend to use a SQL database with the following tables:
+## Transformations
+General data cleaning such as standardizing postal codes.
 
-Health Data Table:        
-Restaurant Name
-Restaurant Address
-Restaurant City
-Restaurant State
-Restaurant Zip
-Health Inspection Score
-Health Inspection Grade
+## SQL Tables / Load
 
-Yelp Restaurant Table 
-Business ID
-Business Name
-Business Address
-Business City
-Business State
-Business Zip
+### Restaurant Inspection Data Table:        
+    Restaurant Name
+    Restaurant Address
+    Restaurant City
+    Restaurant State
+    Restaurant Zip
+    Health Inspection Score
+    Health Inspection Grade
 
-Yelp Star Rank Table
-Business ID
-Star Rating
-Review data
+### Yelp Restaurant Data Table 
+    Business ID
+    Business Name
+    Business Address
+    Business City
+    Business State
+    Business Zip
 
-Transformations:
-We will take each data set and reduce them to necessary fields only in a Jupyter notebook.
-We will clean fields in each data set to ensure they appropriate.  For example, some of the zip codes are the full postal with 5-4 and some are just the the 5 numbers.
-We will create new dataframes from each data set in preparation for the SQL database.  
-
-This app is for the exercise of the ETL (Extract Transform Load) procedure in data analytics. Classmates and I will be making calls to the Yelp Fusion API then placing the extracted data into a Pandas DataFrame before transforming said data. Once the data has been transformed, we will be loading it into our local MySQL database.
+### Yelp Review Data Table
+    Business ID
+    Star Rating
+    Review data 
